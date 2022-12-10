@@ -2,9 +2,112 @@
 
     let txtUsusario=document.getElementById('txtUsusario');
     let txtPasword=document.getElementById('txtPasword');
+    let spanLogin=document.getElementById('spanLogin');
+    let btnLogin=document.getElementById('btnLogin');
+    let divLogin=document.getElementById('divLogin');
+    let btnRegistrarse = document.getElementById('btnRegistrarse');
+    let divRegistrar=document.getElementById('divRegistrar');
+    let btnRegistro=document.getElementById('btnRegistro');
+    let btnVolverRegistrarse=document.getElementById('btnVolverRegistrarse');
 
-    function ingresar(){
-        console.log('ingresando')
+    let txtPrimerNombre=document.getElementById('txtPrimerNombre');
+    let txtSegundoNombre=document.getElementById('txtSegundoNombre');
+    let txtPrimerApellido=document.getElementById('txtPrimerApellido');
+    let txtSegundoApellido=document.getElementById('txtSegundoApellido');
+    let txtCorreo=document.getElementById('txtCorreo');
+    let txtTelefono=document.getElementById('txtTelefono');
+    let sltRoles=document.getElementById('sltRoles');
+    let txtUsuarioRegister=document.getElementById('txtUsuarioRegister');
+    let txtPaswordRegister=document.getElementById('txtPaswordRegister');
+
+    document.addEventListener("DOMContentLoaded",async function () {
+        await traerRoles();
+    });
+
+    async function traerRoles(){
+        let url = `@Url.Action("consultarRoles", "Login")`;
+        let r = await Get(url);
+        sltRoles.innerHTML=`<option value="0">Seleccione rol...</option>`;
+        r.forEach(el=>{
+            sltRoles.innerHTML+=`<option value="${el.id}">${el.descripcion}</option>`;
+        });
     }
+
+    function limpiarLogin(){
+        $(txtUsusario).val('');
+        $(txtPasword).val('');
+    }
+
+
+    function limpiarRegistro(){
+        $(txtPrimerNombre).val('');
+        $(txtSegundoNombre).val('');
+        $(txtPrimerApellido).val('');
+        $(txtSegundoNombre).val('');
+        $(txtUsuarioRegister).val('');
+        $(txtPaswordRegister).val('');
+        $(txtCorreo).val('');
+        $(txtTelefono).val('');
+        $(sltRoles).val('0');
+    }
+
+    txtUsusario.addEventListener('change', function(){
+        ocultarElemento(spanLogin, true);
+    });
+    
+    txtPasword.addEventListener('change', function(){
+        ocultarElemento(spanLogin, true);
+    });
+
+    btnLogin.addEventListener('click', async function(){
+        let login = {
+            'usuario':$(txtUsusario).val(),
+            'contrasena':$(txtPasword).val()
+        };
+        let url = `@Url.Action("Autenticar", "Login")`;
+        let r = await Get(url, {'usuario': login});
+        if(r.login){
+            url= `@Url.Action("Home", "Home")`;
+            window.location = url
+            return
+        }
+        spanLogin.innerHTML=r.mensaje;
+        ocultarElemento(spanLogin, false);
+        limpiarLogin()
+    });
+
+    btnRegistrarse.addEventListener('click', function(){
+        limpiarLogin();
+        ocultarElemento(spanLogin, true);
+        ocultarElemento(divLogin, true);
+        ocultarElemento(divRegistrar, false);
+    });
+
+    btnRegistro.addEventListener('click', async function(){
+        var dato={
+            "primerNombre":$(txtPrimerNombre).val(),
+            "segundoNombre":$(txtSegundoNombre).val(),
+            "primerApellido":$(txtPrimerApellido).val(),
+            "segundoApellido":$(txtSegundoNombre).val(),
+            "login":$(txtUsuarioRegister).val(),
+            "contraseña":$(txtPaswordRegister).val(),
+            "correo":$(txtCorreo).val(),
+            "telefono":$(txtTelefono).val(),
+            "idRol":parseInt($(sltRoles).val())
+        }
+        let url = `@Url.Action("RegistrarUsuario", "Login")`;
+        let r = await Get(url, {'usuario': dato});
+        if(r.mensaje=='se creo usuario'){
+            ocultarElemento(divLogin, false);
+            ocultarElemento(divRegistrar, true);
+            limpiarRegistro();
+        }
+    })
+
+    btnVolverRegistrarse.addEventListener('click', function(){
+        ocultarElemento(divLogin, false);
+        ocultarElemento(divRegistrar, true);
+        limpiarRegistro();
+    })
 
 </script>

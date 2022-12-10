@@ -1,51 +1,99 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700&family=Work+Sans:wght@100;300;400;500;600;700&display=swap");
 
 body {
-    
 }
 
-p,a{
-    font-family: "Monserrat";
+p,
+a {
+  font-family: "Monserrat";
 }
 
-h1, h2, h3, h4, h5 {
-    font-family: "Montserrat", sans-serif;
-    color: #3265ca;
-    font-weight:700;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Montserrat", sans-serif;
+  color: #3265ca;
+  font-weight: 700;
+}
+h5 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }
 
 body {
-    background-image: url("../images/fondo.jpg");
-    width: 100%;
-    height: 100%;
-    color: #3265ca;
-    font-weight: bold;
+  background-image: url("../images/fondo.png");
+  width: 100%;
+  height: 100%;
+  color: #3265ca;
+  font-weight: bold;
 }
-.logo-login{
-    display: flex;
-    justify-content: center;
-    background-color: #3265ca;
+.logo-login {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
+.linea-login {
+  min-width: 5px;
+  background: linear-gradient(to right, #20207d, #3333cc);
 }
 
-.login{
-    padding: 90px;
+.login {
+  padding: 5%;
+  margin-top: 20%;
 }
 
 .div-login {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    border: 1px solid #3265ca;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* aplicar a top y al margen izquierdo un valor negativo para completar el centrado del elemento hijo */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border: 1px solid #3265ca;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* aplicar a top y al margen izquierdo un valor negativo para completar el centrado del elemento hijo */
 }
 
-footer {
-    background-color: #3265ca;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    color: white;
-  }
+.div-estandar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 80%;
+}
+
+.div-registrar{
+  border: 1px solid #3265ca;
+  background-color: #fff;
+  padding: 25px;
+}
+.contenerdor-login {
+  background-color: #fff;
+}
+
+.span-advertencia {
+  color: #a80521;
+  font-size: 10px;
+  margin: 0;
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  color: #000 !important;
+  min-height: 200px;
+  background-color: transparent;
+  transition: 1s;
+}
+.card:hover {
+  background-color: #fff;
+  transition: 1s;
+}
+a {
+  text-decoration: none;
+}
+.a-link {
+  font-size: 13px;
+  text-decoration: underline !important;
+}

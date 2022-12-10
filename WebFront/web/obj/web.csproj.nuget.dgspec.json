@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\WebFront\\web\\web.csproj": {}
+    "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\WebFront\\web\\web.csproj": {
+    "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\WebFront\\web\\web.csproj",
+        "projectUniqueName": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\web.csproj",
         "projectName": "web",
-        "projectPath": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\WebFront\\web\\web.csproj",
+        "projectPath": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\web.csproj",
         "packagesPath": "C:\\Users\\JHAD2807\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\WebFront\\web\\obj\\",
+        "outputPath": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

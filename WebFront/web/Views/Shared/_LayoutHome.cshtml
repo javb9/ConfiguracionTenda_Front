@@ -1,16 +1,9 @@
 ﻿@{
     Layout = "_Layout";
 }
-<div class="container">
-    <partial name="Partials/_MenuSuperior"></partial>
+<div class="text-end">
+    <a type="button" class="text-dark" asp-controller="Login" asp-action="Index"><span class="fas fa-arrow-alt-to-left fa-1x"></span>Cerrar sesion</a>
 </div>
-
 <div>
     @RenderBody()
 </div>
-
-<footer class="border-top footer text-muted">
-    <div class="container">
-        <partial name="Partials/_Footer"></partial>
-    </div>
-</footer>
