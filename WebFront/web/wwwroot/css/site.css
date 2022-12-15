@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700&family=Work+Sans:wght@100;300;400;500;600;700&display=swap");
 
 body {
+  
 }
 
 p,
@@ -22,6 +23,7 @@ h5 {
 }
 
 body {
+  overflow: hidden;
   background-image: url("../images/fondo.png");
   width: 100%;
   height: 100%;
@@ -32,6 +34,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 0px;
+  min-height: 100%;
 }
 .linea-login {
   min-width: 5px;
@@ -54,6 +57,12 @@ body {
     -50%,
     -50%
   ); /* aplicar a top y al margen izquierdo un valor negativo para completar el centrado del elemento hijo */
+}
+
+.btn{
+  font-family: "Monserrat";
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .div-estandar {
@@ -79,21 +88,79 @@ body {
   margin: 0;
 }
 
-.card {
-  backdrop-filter: blur(10px);
-  color: #000 !important;
-  min-height: 200px;
-  background-color: transparent;
-  transition: 1s;
-}
-.card:hover {
-  background-color: #fff;
-  transition: 1s;
-}
 a {
   text-decoration: none;
 }
 .a-link {
   font-size: 13px;
   text-decoration: underline !important;
+}
+
+.home{
+  min-height: 100vh;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.active{
+  left: 0;
+}
+
+.home-contenedor{
+  position: absolute;
+  left: 25% !important;
+  width: 75%;
+  color: #000;
+  transition: .5s;
+}
+
+#sidebar{
+  box-shadow: 1px 0 15px 1px #333;
+  color: #fff !important;
+  width: 25%;
+  background: linear-gradient(to right, #20207d, #3333cc);
+  position: absolute;
+  left: -25%;
+  min-height: 100%;
+  transition: .5s;
+}
+
+#sidebar.active{
+  left: 0 !important;
+}
+
+#sidebar ul {
+  margin-top: 25%;
+}
+#sidebar ul li{
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  list-style: none;
+  padding: 15px 10px;
+  text-align: center;
+}
+
+.li-opciones{
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(100,100,100, .3) !important;
+}
+
+.li-opciones:hover{
+  background-color: #20207d;
+}
+#closeSidebar{
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+}
+
+#closeSidebar:hover{
+  background-color: #20207d;
+}
+
+.boton-salir{
+  margin-top: 60%;
 }

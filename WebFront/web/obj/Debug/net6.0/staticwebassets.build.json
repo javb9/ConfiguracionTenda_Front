@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2ITeYeeOqTIpAApXtZ1fLIdEBxoHh0U3qzD6cQQeqXw=",
+  "Hash": "cbeyoSl2p8gQDLG/NES/5JDdabsr0VMKcdeWkunQX7E=",
   "Source": "web",
   "BasePath": "_content/web",
   "Mode": "Default",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Imagen4.png"
+    },
+    {
+      "Identity": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\wwwroot\\images\\ImagenSilcom.png",
+      "SourceId": "web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\wwwroot\\",
+      "BasePath": "_content/web",
+      "RelativePath": "images/ImagenSilcom.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\ImagenSilcom.png"
     },
     {
       "Identity": "C:\\Users\\JHAD2807\\Desktop\\estudio\\TG\\TGDiana\\WebFront\\ConfiguracionTenda_Front\\WebFront\\web\\wwwroot\\images\\router.png",
