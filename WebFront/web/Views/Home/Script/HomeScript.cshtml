@@ -9,6 +9,21 @@
     let divDatosUsuario=document.getElementById('divDatosUsuario');
     let btnDatosUsuario=document.getElementById('btnDatosUsuario');
 
+    let divCambioContrasenna=document.getElementById('divCambioContrasenna');
+    let btnCambioContrasenna=document.getElementById('btnCambioContrasenna');
+
+    let txtNombreRed=document.getElementById('txtNombreRed');
+    let txtPasswordRed=document.getElementById('txtPasswordRed');
+
+    let btnGuardarCambio=document.getElementById('btnGuardarCambio');
+
+    function limpiarHome(){
+        txtNombreRed.value='';
+        txtPasswordRed.value='';
+        divDatosUsuario.classList.add('d-none');
+        divCambioContrasenna.classList.add('d-none');
+    }
+
     openSlide.addEventListener('click', function(){
         sidebar.classList.add('active');
         contenedor.style.marginLeft="0";
@@ -20,10 +35,25 @@
         sidebar.classList.remove('active');
         contenedor.style.marginLeft="-25%";
         contenedor.style.width="100%";
-        openSlide.classList.remove('d-none')
+        openSlide.classList.remove('d-none');
     });
-
+    
     btnDatosUsuario.addEventListener('click', function(){
+        limpiarHome()
         divDatosUsuario.classList.remove('d-none');
     });
+
+    btnCambioContrasenna.addEventListener('click', function(){
+        limpiarHome()
+        divCambioContrasenna.classList.remove('d-none');
+    });
+
+    btnGuardarCambio.addEventListener('click', async function(){
+        let dato={
+            'nombreRed':txtNombreRed.value,
+            'contrasennaRed':txtPasswordRed.value
+        };
+        let url = `@Url.Action("CambiarContrasennaRouter", "Home")`;
+        let r = await Get(url, {'datos': dato});
+    })
 </script>

@@ -34,6 +34,12 @@
            public decimal idRol {get; set;}
         }
 
+        public class routerAdmin
+        {
+            public string nombreRed { get; set; }
+            public string contrasennaRed { get; set; }
+        }
+
         public class Responses
         {
             public object Response { get; set; }

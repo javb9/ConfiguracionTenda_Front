@@ -28,10 +28,18 @@ namespace web.Controllers
             return new HttpClient(clientHandler);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public object CambiarContrasennaRouter(routerAdmin datos)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            string URI = UrlApi + "/CambiarContrasennaRouter";
+            var httpClient = getHttpClient();
+            var response = httpClient.PostAsJsonAsync(URI, datos).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
+
     }
 }
