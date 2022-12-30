@@ -17,18 +17,91 @@
 
     let btnGuardarCambio=document.getElementById('btnGuardarCambio');
 
+    let txtNombreShow=document.getElementById('txtNombreShow');
+    let sltTipoDocShow=document.getElementById('sltTipoDocShow');
+    let txtNumeroDocumentoShow=document.getElementById('txtNumeroDocumentoShow');
+    let txtCorreoShow=document.getElementById('txtCorreoShow');
+    let txtTelefonoShow=document.getElementById('txtTelefonoShow');
+    let sltRolesShow=document.getElementById('sltRolesShow');
+    let btnGuardarEditar=document.getElementById('btnGuardarEditar');
+    let chkValidar=document.getElementById('chkValidar');
+    let divBtnGuardar=document.getElementById('divBtnGuardar');
+
+    let idUsuario=0;
+
+    document.addEventListener("DOMContentLoaded",async function () {
+        idUsuario=@ViewBag.idUsuario;
+        await traerRoles();
+        await traerTiposDocumento();
+    });
+
+    async function traerTiposDocumento(){
+        let url = `@Url.Action("consultarTiposDocumento", "Home")`;
+        let r = await Get(url);
+        sltTipoDocShow.innerHTML=`<option value="0">Seleccione tipo de documento...</option>`;
+        r.forEach(el=>{
+            sltTipoDocShow.innerHTML+=`<option value="${el.id}">${el.descripcion}</option>`;
+        });
+    }
+
+    async function traerRoles(){
+        let url = `@Url.Action("consultarRoles", "Login")`;
+        let r = await Get(url);
+        sltRolesShow.innerHTML=`<option value="0">Seleccione rol...</option>`;
+        r.forEach(el=>{
+            sltRolesShow.innerHTML+=`<option value="${el.id}">${el.descripcion}</option>`;
+        });
+    }
+
     function limpiarHome(){
+        limpiarControlesDatosUsuario();
+        divBtnGuardar.classList.add('d-none');
         txtNombreRed.value='';
         txtPasswordRed.value='';
         divDatosUsuario.classList.add('d-none');
         divCambioContrasenna.classList.add('d-none');
     }
 
+    function limpiarControlesDatosUsuario(){
+        chkValidar.checked=false;
+        txtNombreShow.value='';
+        sltTipoDocShow.value='0';
+        txtNumeroDocumentoShow.value='';
+        txtCorreoShow.value='';
+        txtTelefonoShow.value='';
+        sltRolesShow.value='0';
+    }
+
+    function readOnly(Element, value){
+        Element.setAttribute('readonly', value);
+    }
+
+    function disabled(Element, value){
+        Element.setAttribute('disabled', value);
+    }
+
+    function soloLeerControles(){
+        readOnly(txtNombreShow,true);
+        disabled(sltTipoDocShow,true);
+        readOnly(txtNumeroDocumentoShow,true);
+        readOnly(txtCorreoShow,true);
+        readOnly(txtTelefonoShow,true);
+        disabled(sltRolesShow,true);
+    }
+
+    function reiniciarSoloLeerControles(){
+        readOnly(txtNombreShow,false);
+        sltTipoDocShow.removeAttribute('disabled');
+        readOnly(txtNumeroDocumentoShow,false);
+        readOnly(txtCorreoShow,false);
+        readOnly(txtTelefonoShow,false);
+    }
+
     openSlide.addEventListener('click', function(){
         sidebar.classList.add('active');
         contenedor.style.marginLeft="0";
         contenedor.style.width="75%";
-        openSlide.classList.add('d-none')
+        openSlide.classList.add('d-none');
     });
 
     closeSidebar.addEventListener('click', function(){
@@ -38,9 +111,32 @@
         openSlide.classList.remove('d-none');
     });
     
-    btnDatosUsuario.addEventListener('click', function(){
+    btnDatosUsuario.addEventListener('click', async function(){
         limpiarHome()
+        await traerDatosUsuario();
         divDatosUsuario.classList.remove('d-none');
+    });
+
+    async function traerDatosUsuario(){
+        let url = `@Url.Action("consultarUsuario", "Home")` + `?idUsuario=${idUsuario}`;
+        let r = await Get(url);
+        txtNombreShow.value=r.nombre;
+        sltTipoDocShow.value=r.tipoDocumento;
+        txtNumeroDocumentoShow.value=r.numeroDocumento;
+        txtCorreoShow.value=r.correo;
+        txtTelefonoShow.value=r.telefono;
+        sltRolesShow.value=r.idRol;
+        soloLeerControles();
+    }
+
+    chkValidar.addEventListener('change', function(){
+        if(chkValidar.checked){
+            reiniciarSoloLeerControles();
+            divBtnGuardar.classList.remove('d-none');
+        }else{
+            soloLeerControles();
+            divBtnGuardar.classList.add('d-none');
+        }
     });
 
     btnCambioContrasenna.addEventListener('click', function(){
@@ -55,5 +151,23 @@
         };
         let url = `@Url.Action("CambiarContrasennaRouter", "Home")`;
         let r = await Get(url, {'datos': dato});
+    })
+
+    btnGuardarEditar.addEventListener('click', async function(){
+        var dato={
+            "id":idUsuario,
+            "nombre":$(txtNombreShow).val(),
+            "tipoDocumento":$(sltTipoDocShow).val(),
+            "numeroDocumento":$(txtNumeroDocumentoShow).val(),
+            "correo":$(txtCorreoShow).val(),
+            "telefono":$(txtTelefonoShow).val()
+        }
+        let url = `@Url.Action("EditarUsuario", "Home")`;
+        let r = await Get(url, {'usuario': dato});
+        if(r.mensaje=='se edito usuario'){
+            limpiarHome()
+            await traerDatosUsuario();
+            divDatosUsuario.classList.remove('d-none');
+        }
     })
 </script>

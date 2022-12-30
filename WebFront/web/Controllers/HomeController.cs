@@ -17,8 +17,9 @@ namespace web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Home()
+        public IActionResult Home(decimal idUsuario)
         {
+            ViewBag.idUsuario = idUsuario;
             return View();
         }
         public HttpClient getHttpClient()
@@ -39,6 +40,54 @@ namespace web.Controllers
                 return true;
             }
             return false;
+        }
+
+        public object consultarTiposDocumento()
+        {
+            List<parametricas> tipos = new List<parametricas>();
+            string URI = UrlApi + "/consultarTiposDoc";
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = response.Content.ReadAsStringAsync().Result;
+                Responses respuesta = JsonConvert.DeserializeObject<Responses>(responseString);
+                tipos = JsonConvert.DeserializeObject<List<parametricas>>(respuesta.Response.ToString());
+            }
+            return tipos;
+        }
+
+        public object consultarUsuario(decimal idUsuario)
+        {
+            datasUser usuario = new datasUser();
+            string URI = UrlApi + "/consultarUsuario/" + idUsuario;
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = response.Content.ReadAsStringAsync().Result;
+                Responses respuesta = JsonConvert.DeserializeObject<Responses>(responseString);
+                usuario = JsonConvert.DeserializeObject<datasUser>(respuesta.Response.ToString());
+            }
+            return usuario;
+        }
+        
+        public object EditarUsuario(datasUser usuario)
+        {
+            validacionAut validacion = new validacionAut();
+            string URI = UrlApi + "/EditarUsuario";
+            var httpClient = getHttpClient();
+            var response = httpClient.PostAsJsonAsync(URI, usuario).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = response.Content.ReadAsStringAsync().Result;
+                Responses respuesta = JsonConvert.DeserializeObject<Responses>(responseString);
+                validacion = JsonConvert.DeserializeObject<validacionAut>(respuesta.Response.ToString());
+            }
+            return validacion;
         }
 
     }

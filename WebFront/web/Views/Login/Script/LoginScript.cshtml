@@ -10,10 +10,9 @@
     let btnRegistro=document.getElementById('btnRegistro');
     let btnVolverRegistrarse=document.getElementById('btnVolverRegistrarse');
 
-    let txtPrimerNombre=document.getElementById('txtPrimerNombre');
-    let txtSegundoNombre=document.getElementById('txtSegundoNombre');
-    let txtPrimerApellido=document.getElementById('txtPrimerApellido');
-    let txtSegundoApellido=document.getElementById('txtSegundoApellido');
+    let txtNombre=document.getElementById('txtNombre');
+    let sltTipoDoc=document.getElementById('sltTipoDoc');
+    let txtNumeroDocumento=document.getElementById('txtNumeroDocumento');
     let txtCorreo=document.getElementById('txtCorreo');
     let txtTelefono=document.getElementById('txtTelefono');
     let sltRoles=document.getElementById('sltRoles');
@@ -22,7 +21,17 @@
 
     document.addEventListener("DOMContentLoaded",async function () {
         await traerRoles();
+        await traerTiposDocumento();
     });
+
+    async function traerTiposDocumento(){
+        let url = `@Url.Action("consultarTiposDocumento", "Home")`;
+        let r = await Get(url);
+        sltTipoDoc.innerHTML=`<option value="0">Seleccione tipo de documento...</option>`;
+        r.forEach(el=>{
+            sltTipoDoc.innerHTML+=`<option value="${el.id}">${el.descripcion}</option>`;
+        });
+    }
 
     async function traerRoles(){
         let url = `@Url.Action("consultarRoles", "Login")`;
@@ -40,10 +49,9 @@
 
 
     function limpiarRegistro(){
-        $(txtPrimerNombre).val('');
-        $(txtSegundoNombre).val('');
-        $(txtPrimerApellido).val('');
-        $(txtSegundoNombre).val('');
+        $(txtNombre).val('');
+        $(sltTipoDoc).val('');
+        $(txtNumeroDocumento).val('');
         $(txtUsuarioRegister).val('');
         $(txtPaswordRegister).val('');
         $(txtCorreo).val('');
@@ -67,7 +75,7 @@
         let url = `@Url.Action("Autenticar", "Login")`;
         let r = await Get(url, {'usuario': login});
         if(r.login){
-            url= `@Url.Action("Home", "Home")`;
+            url= `@Url.Action("Home", "Home")` + `?idUsuario=${r.idUsuario}`;
             window.location = url
             return
         }
@@ -85,10 +93,9 @@
 
     btnRegistro.addEventListener('click', async function(){
         var dato={
-            "primerNombre":$(txtPrimerNombre).val(),
-            "segundoNombre":$(txtSegundoNombre).val(),
-            "primerApellido":$(txtPrimerApellido).val(),
-            "segundoApellido":$(txtSegundoNombre).val(),
+            "nombre":$(txtNombre).val(),
+            "tipoDocumento":$(sltTipoDoc).val(),
+            "numeroDocumento":$(txtNumeroDocumento).val(),
             "login":$(txtUsuarioRegister).val(),
             "contraseña":$(txtPaswordRegister).val(),
             "correo":$(txtCorreo).val(),
