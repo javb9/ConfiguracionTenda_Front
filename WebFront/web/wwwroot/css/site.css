@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700&family=Work+Sans:wght@100;300;400;500;600;700&display=swap");
 
-body {
-  
-}
 
 p,
 a {
@@ -23,7 +20,7 @@ h5 {
 }
 
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: url("../images/fondo.png");
   width: 100%;
   height: 100%;
@@ -63,6 +60,7 @@ body {
   font-family: "Monserrat";
   text-transform: uppercase;
   font-weight: 700;
+  border-radius: 10px;
 }
 
 .div-estandar {
@@ -70,7 +68,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 80%;
+  width: 80%;
+  max-width: 80%;
 }
 
 .div-registrar{
@@ -121,7 +120,8 @@ a {
 #sidebar{
   box-shadow: 1px 0 15px 1px #333;
   color: #fff !important;
-  width: 25%;
+  max-width: 25%;
+  min-width: 25%;
   background: linear-gradient(to right, #20207d, #3333cc);
   position: absolute;
   left: -25%;
@@ -165,5 +165,26 @@ a {
 }
 
 .boton-salir{
-  margin-top: 60%;
+  margin-top: 40%;
+}
+
+.label-datatable {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  padding: 15px;
+}
+
+.input-datatable {
+  width: 100% !important;
+  margin-left: -2px !important;
+}
+
+.dataTables_scroll{
+  min-width: 100%;
+  max-width: 100%;
+}
+
+table th, td{
+  text-align: center;
+  min-width: 100%;
 }

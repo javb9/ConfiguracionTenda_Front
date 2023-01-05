@@ -72,3 +72,48 @@ function reiniciarElementos(elemento, span, val = false) {
   }
   ocultarElemento(span, true);
 }
+
+function DataTableGenerico(idTabla, columnas, datos, target) {
+  $(idTabla).DataTable({
+    destroy: true,
+    scrollX: true,
+    lengthChange: true,
+    lengthMenu: [5, 10, 20, 50, 100],
+    paging: true,
+    info: true,
+    dom:
+      "<'row'<'col-md-12'f><'col-md-12 text-end'<'d-flex align-items-center mt-1'<'col-md-10'l><'col-md-2'i>>>>" +
+      "<'row'<'col-md-12'rt><'col-md-12 text-center'p>>",
+    language: {
+      lengthMenu: "Resultados pág. _MENU_",
+      info: "_START_ al _TOTAL_ Resultados",
+      search: "",
+      searchPlaceholder: "Buscar",
+      zeroRecords: "No se encontraron resultados",
+      infoEmpty: "0 al 0 Resultados",
+      paginate: {
+        previous: "Anterior",
+        next: "Siguiente",
+      },
+    },
+    data: datos,
+    columns: columnas,
+    columnDefs: [
+      {
+        targets: target,
+      },
+    ],
+  });
+  agregarClasesDatatable(idTabla);
+}
+
+function agregarClasesDatatable(idTabla) {
+  $(`${idTabla}_filter label`).addClass("col-md-12 label-datatable");
+  $(`${idTabla}_filter input`).addClass("input-datatable");
+
+  if ($(idTabla).find("tbody tr").length < 5) {
+    $(`${idTabla}_paginate`).hide();
+  } else {
+    $(`${idTabla}_paginate`).show();
+  }
+}

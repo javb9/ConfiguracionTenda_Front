@@ -26,11 +26,30 @@
     let btnGuardarEditar=document.getElementById('btnGuardarEditar');
     let chkValidar=document.getElementById('chkValidar');
     let divBtnGuardar=document.getElementById('divBtnGuardar');
+    let divConectados=document.getElementById('divConectados');
+    let btnConectados=document.getElementById('btnConectados');
+    let tableConectados=document.getElementById('tableConectados');
+    let liNotifiaciones=document.getElementById('liNotifiaciones');
+    let divNotificaciones=document.getElementById('divNotificaciones');
+    let btnNotificaciones=document.getElementById('btnNotificaciones');
+    let liCambioContrasenna=document.getElementById('liCambioContrasenna');
+    let liConectados=document.getElementById('liConectados');
 
     let idUsuario=0;
 
     document.addEventListener("DOMContentLoaded",async function () {
         idUsuario=@ViewBag.idUsuario;
+        let url = `@Url.Action("consultarUsuario", "Home")` + `?idUsuario=${idUsuario}`;
+        let r = await Get(url);
+        if(r.idRol=='1'){
+            liNotifiaciones.classList.remove('d-none');
+            liConectados.classList.add('d-none');
+            liCambioContrasenna.classList.add('d-none');
+        }else{
+            liNotifiaciones.classList.add('d-none');
+            liConectados.classList.remove('d-none');
+            liCambioContrasenna.classList.remove('d-none');
+        }
         await traerRoles();
         await traerTiposDocumento();
     });
@@ -60,6 +79,8 @@
         txtPasswordRed.value='';
         divDatosUsuario.classList.add('d-none');
         divCambioContrasenna.classList.add('d-none');
+        divConectados.classList.add('d-none');
+        divNotificaciones.classList.add('d-none');
     }
 
     function limpiarControlesDatosUsuario(){
@@ -72,9 +93,7 @@
         sltRolesShow.value='0';
     }
 
-    function readOnly(Element, value){
-        Element.setAttribute('readonly', value);
-    }
+    
 
     function disabled(Element, value){
         Element.setAttribute('disabled', value);
@@ -97,6 +116,29 @@
         readOnly(txtTelefonoShow,false);
     }
 
+    async function cragarTablaNotificaciones(){
+        let url = `@Url.Action("consultarNotifiaciones", "Home")`;
+        let r = await Get(url);
+        columns=[
+            {
+                'data':'id',
+                className:'d-none'
+            },
+            {
+                'data':'notificacion'
+            },
+            {
+                'data':'documento'
+            },
+            {
+                render: function(){
+                    return '<button class="btn btn-danger btnEliminarNot"><i class="fas fa-trash"></i></button> '
+                }
+            }
+        ]
+        DataTableGenerico('#tableNotificaciones', columns, r, 3)
+    }
+
     openSlide.addEventListener('click', function(){
         sidebar.classList.add('active');
         contenedor.style.marginLeft="0";
@@ -115,6 +157,15 @@
         limpiarHome()
         await traerDatosUsuario();
         divDatosUsuario.classList.remove('d-none');
+    });
+
+    $('#tableNotificaciones tbody').on('click', '.btnEliminarNot', async function(){
+        let id = parseInt($(this).parents("tr").find("td")[0].innerText);
+        let url = `@Url.Action("EliminarNotificacion", "Home")` + `?id=${id}`;
+        let r = await Get(url);
+        if(r){
+            cragarTablaNotificaciones();
+        }
     });
 
     async function traerDatosUsuario(){
@@ -144,6 +195,17 @@
         divCambioContrasenna.classList.remove('d-none');
     });
 
+    btnConectados.addEventListener('click', function(){
+        limpiarHome()
+        divConectados.classList.remove('d-none');
+    });
+
+    btnNotificaciones.addEventListener('click', async function(){
+        limpiarHome()
+        await cragarTablaNotificaciones()
+        divNotificaciones.classList.remove('d-none');
+    });
+
     btnGuardarCambio.addEventListener('click', async function(){
         let dato={
             'nombreRed':txtNombreRed.value,
@@ -151,6 +213,10 @@
         };
         let url = `@Url.Action("CambiarContrasennaRouter", "Home")`;
         let r = await Get(url, {'datos': dato});
+        if(r){
+            txtNombreRed.value='';
+            txtPasswordRed.value='';
+        }
     })
 
     btnGuardarEditar.addEventListener('click', async function(){

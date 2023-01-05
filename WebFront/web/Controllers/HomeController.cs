@@ -31,7 +31,7 @@ namespace web.Controllers
 
         public object CambiarContrasennaRouter(routerAdmin datos)
         {
-            string URI = UrlApi + "/CambiarContrasennaRouter";
+            string URI = UrlApi + "/EditRouterInfo";
             var httpClient = getHttpClient();
             var response = httpClient.PostAsJsonAsync(URI, datos).Result;
 
@@ -88,6 +88,35 @@ namespace web.Controllers
                 validacion = JsonConvert.DeserializeObject<validacionAut>(respuesta.Response.ToString());
             }
             return validacion;
+        }
+
+        public object consultarNotifiaciones()
+        {
+            List<notificaciones> not = new List<notificaciones>();
+            string URI = UrlApi + "/consultarNotifiaciones";
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = response.Content.ReadAsStringAsync().Result;
+                Responses respuesta = JsonConvert.DeserializeObject<Responses>(responseString);
+                not = JsonConvert.DeserializeObject<List<notificaciones>>(respuesta.Response.ToString());
+            }
+            return not;
+        }
+
+        public object EliminarNotificacion(decimal id)
+        {
+            string URI = UrlApi + "/EliminarNotificacion/" + id;
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

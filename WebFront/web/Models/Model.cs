@@ -2,6 +2,12 @@
 {
     public class Model
     {
+        public class notificaciones
+        {
+            public decimal id { get; set; }
+            public string notificacion { get; set; }
+            public string documento { get; set; }
+        }
         public class user
         {
             public string usuario { get; set; }
