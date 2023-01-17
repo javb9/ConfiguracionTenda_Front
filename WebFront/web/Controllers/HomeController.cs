@@ -119,5 +119,21 @@ namespace web.Controllers
             return false;
         }
 
+        public object consultarConectados()
+        {
+            List<conectados> tipos = new List<conectados>();
+            string URI = UrlApi + "/ObtenerConectados";
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = response.Content.ReadAsStringAsync().Result;
+                Responses respuesta = JsonConvert.DeserializeObject<Responses>(responseString);
+                tipos = JsonConvert.DeserializeObject<List<conectados>>(respuesta.Response.ToString());
+            }
+            return tipos;
+        }
+
     }
 }

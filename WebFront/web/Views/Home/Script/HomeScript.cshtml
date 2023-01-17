@@ -195,8 +195,21 @@
         divCambioContrasenna.classList.remove('d-none');
     });
 
-    btnConectados.addEventListener('click', function(){
+    btnConectados.addEventListener('click', async function(){
         limpiarHome()
+        let url = `@Url.Action("consultarConectados", "Home")`;
+        let r = await Get(url);
+        columns=[
+            {
+                'data':'mac'
+            },
+            {
+                render: function(){
+                    return '<button class="btn btn-danger btnBloquear"><i class="fas fa-ban"></i></button> '
+                }
+            }
+        ]
+        DataTableGenerico('#tableConectados', columns, r, 1)
         divConectados.classList.remove('d-none');
     });
 

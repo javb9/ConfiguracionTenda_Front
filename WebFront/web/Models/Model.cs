@@ -51,5 +51,10 @@
             public object Response { get; set; }
             public bool Error { get; set; }
         }
+
+        public class conectados
+        {
+            public string mac { get; set; }
+        }
     }
 }
