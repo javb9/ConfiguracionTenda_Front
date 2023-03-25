@@ -139,6 +139,22 @@
         DataTableGenerico('#tableNotificaciones', columns, r, 3)
     }
 
+    async function cargarConectados(){
+        let url = `@Url.Action("consultarConectados", "Home")`;
+        let r = await Get(url);
+        columns=[
+            {
+                'data':'mac'
+            },
+            {
+                render: function(){
+                    return '<button class="btn btn-danger btnBloquear"><i class="fas fa-ban"></i></button> '
+                }
+            }
+        ]
+        DataTableGenerico('#tableConectados', columns, r, 1)
+    }
+
     openSlide.addEventListener('click', function(){
         sidebar.classList.add('active');
         contenedor.style.marginLeft="0";
@@ -165,6 +181,15 @@
         let r = await Get(url);
         if(r){
             cragarTablaNotificaciones();
+        }
+    });
+
+    $('#tableConectados tbody').on('click', '.btnBloquear', async function(){
+        let mac = $(this).parents("tr").find("td")[0].innerText;
+        let url = `@Url.Action("BlockDevice", "Home")` + `?mac=${mac}`;
+        let r = await Get(url);
+        if(r){
+            cargarConectados();
         }
     });
 
@@ -196,23 +221,12 @@
     });
 
     btnConectados.addEventListener('click', async function(){
-        limpiarHome()
-        let url = `@Url.Action("consultarConectados", "Home")`;
-        let r = await Get(url);
-        columns=[
-            {
-                'data':'mac'
-            },
-            {
-                render: function(){
-                    return '<button class="btn btn-danger btnBloquear"><i class="fas fa-ban"></i></button> '
-                }
-            }
-        ]
-        DataTableGenerico('#tableConectados', columns, r, 1)
+        limpiarHome();
+        cargarConectados();
         divConectados.classList.remove('d-none');
     });
 
+    
     btnNotificaciones.addEventListener('click', async function(){
         limpiarHome()
         await cragarTablaNotificaciones()
@@ -222,7 +236,8 @@
     btnGuardarCambio.addEventListener('click', async function(){
         let dato={
             'nombreRed':txtNombreRed.value,
-            'contrasennaRed':txtPasswordRed.value
+            'contrasennaRed':txtPasswordRed.value,
+            'idUsuario':idUsuario
         };
         let url = `@Url.Action("CambiarContrasennaRouter", "Home")`;
         let r = await Get(url, {'datos': dato});

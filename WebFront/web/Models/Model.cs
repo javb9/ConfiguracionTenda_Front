@@ -44,6 +44,7 @@
         {
             public string nombreRed { get; set; }
             public string contrasennaRed { get; set; }
+            public int idUsuario { get; set; }
         }
 
         public class Responses

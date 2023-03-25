@@ -42,6 +42,19 @@ namespace web.Controllers
             return false;
         }
 
+        public object BlockDevice(string mac)
+        {
+            string URI = UrlApi + "/BlockDevice/" + mac;
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public object consultarTiposDocumento()
         {
             List<parametricas> tipos = new List<parametricas>();
