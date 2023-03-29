@@ -135,6 +135,8 @@ namespace web.Controllers
         public object consultarConectados()
         {
             List<conectados> tipos = new List<conectados>();
+            List<String> Macs = new List<String>();
+            Macs = GetMacs(); 
             string URI = UrlApi + "/ObtenerConectados";
             var httpClient = getHttpClient();
             var response = httpClient.GetAsync(URI).Result;
@@ -146,6 +148,21 @@ namespace web.Controllers
                 tipos = JsonConvert.DeserializeObject<List<conectados>>(respuesta.Response.ToString());
             }
             return tipos;
+        }
+
+        public List<String> GetMacs()
+        {
+            System.Net.NetworkInformation.NetworkInterface[] NetworkInterfaces;
+            NetworkInterfaces = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces();
+            List<String> Macs = new List<String>();
+
+            foreach (System.Net.NetworkInformation.NetworkInterface Interface in NetworkInterfaces)
+            {
+                if (Interface.GetPhysicalAddress().ToString() != String.Empty)
+                    Macs.Add(Interface.GetPhysicalAddress().ToString());
+            }
+
+            return Macs;
         }
 
     }
