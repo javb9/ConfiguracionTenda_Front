@@ -45,6 +45,12 @@
             public string nombreRed { get; set; }
             public string contrasennaRed { get; set; }
             public int idUsuario { get; set; }
+            public int puertaEnlace { get; set; }
+        }
+        public class BlockDeviceModel
+        {
+            public string mac { get; set; }
+            public int puertaEnlace { get; set; }
         }
 
         public class Responses

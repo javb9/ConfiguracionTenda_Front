@@ -36,6 +36,7 @@
     let liConectados=document.getElementById('liConectados');
 
     let idUsuario=0;
+    let puertaEnlace="192.168.1.1";
 
     document.addEventListener("DOMContentLoaded",async function () {
         idUsuario=@ViewBag.idUsuario;
@@ -140,7 +141,7 @@
     }
 
     async function cargarConectados(){
-        let url = `@Url.Action("consultarConectados", "Home")`;
+        let url = `@Url.Action("consultarConectados", "Home")` + '?puertaEnlace=' + puertaEnlace;
         let r = await Get(url);
         columns=[
             {
@@ -186,8 +187,12 @@
 
     $('#tableConectados tbody').on('click', '.btnBloquear', async function(){
         let mac = $(this).parents("tr").find("td")[0].innerText;
-        let url = `@Url.Action("BlockDevice", "Home")` + `?mac=${mac}`;
-        let r = await Get(url);
+        let dato={
+            'mac':mac,
+            'puertaEnlace':puertaEnlace
+        };
+        let url = `@Url.Action("BlockDevice", "Home")`;
+        let r = await Get(url, {"data":dato});
         if(r){
             cargarConectados();
         }
@@ -237,7 +242,8 @@
         let dato={
             'nombreRed':txtNombreRed.value,
             'contrasennaRed':txtPasswordRed.value,
-            'idUsuario':idUsuario
+            'idUsuario':idUsuario,
+            'puertaEnlace':puertaEnlace
         };
         let url = `@Url.Action("CambiarContrasennaRouter", "Home")`;
         let r = await Get(url, {'datos': dato});

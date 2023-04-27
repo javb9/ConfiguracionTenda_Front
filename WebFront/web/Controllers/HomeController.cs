@@ -42,11 +42,11 @@ namespace web.Controllers
             return false;
         }
 
-        public object BlockDevice(string mac)
+        public object BlockDevice(BlockDeviceModel data)
         {
-            string URI = UrlApi + "/BlockDevice/" + mac;
+            string URI = UrlApi + "/BlockDevice/";
             var httpClient = getHttpClient();
-            var response = httpClient.GetAsync(URI).Result;
+            var response = httpClient.PostAsJsonAsync(URI, data).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -132,12 +132,10 @@ namespace web.Controllers
             return false;
         }
 
-        public object consultarConectados()
+        public object consultarConectados(string puertaEnlace)
         {
             List<conectados> tipos = new List<conectados>();
-            List<String> Macs = new List<String>();
-            Macs = GetMacs(); 
-            string URI = UrlApi + "/ObtenerConectados";
+            string URI = UrlApi + "/ObtenerConectados/" + puertaEnlace;
             var httpClient = getHttpClient();
             var response = httpClient.GetAsync(URI).Result;
 
@@ -149,21 +147,5 @@ namespace web.Controllers
             }
             return tipos;
         }
-
-        public List<String> GetMacs()
-        {
-            System.Net.NetworkInformation.NetworkInterface[] NetworkInterfaces;
-            NetworkInterfaces = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces();
-            List<String> Macs = new List<String>();
-
-            foreach (System.Net.NetworkInformation.NetworkInterface Interface in NetworkInterfaces)
-            {
-                if (Interface.GetPhysicalAddress().ToString() != String.Empty)
-                    Macs.Add(Interface.GetPhysicalAddress().ToString());
-            }
-
-            return Macs;
-        }
-
     }
 }
