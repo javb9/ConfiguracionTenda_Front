@@ -188,3 +188,11 @@ table th, td{
   text-align: center;
   min-width: 100%;
 }
+
+.button-alert{
+  border: #f11d41;
+}
+
+span{
+  font-size: 10px;
+}

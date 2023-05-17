@@ -7,7 +7,8 @@
         </div>
         <div class="mt-1 col-md-3">
             <label for="txtPasswordRed" class="form-label">Contraseña de red</label>
-            <input type="password" class="form-control" id="txtPasswordRed" placeholder="Contraseña de red">
+            <input type="password" class="form-control" id="txtPasswordRed" placeholder="Contraseña de red" onkeypress="return validarContrasenna(event)">
+            <span id="spnPassword" class="text-danger d-none">Minimo 8 caracteres</span>
         </div>
         <div class="mt-4 col-md-12 text-end">
             <button class="btn btn-primary col-2" id="btnGuardarCambio">Guardar</button>
