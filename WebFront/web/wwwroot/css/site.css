@@ -196,3 +196,7 @@ table th, td{
 span{
   font-size: 10px;
 }
+
+img {
+  width: 80%;
+}

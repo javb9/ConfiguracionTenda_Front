@@ -24,6 +24,22 @@ namespace web.Controllers
             return new HttpClient(clientHandler);
         }
 
+        public object ValidarNumDoc(string numDoc)
+        {
+            validacionAut validacion = new validacionAut();
+            string URI = UrlApi + "/ValidarNumDoc/" + numDoc;
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = response.Content.ReadAsStringAsync().Result;
+                Responses respuesta = JsonConvert.DeserializeObject<Responses>(responseString);
+                validacion = JsonConvert.DeserializeObject<validacionAut>(respuesta.Response.ToString());
+            }
+            return validacion;
+        }
+
         public object Autenticar(user usuario)
         {
             validacionAut validacion = new validacionAut();

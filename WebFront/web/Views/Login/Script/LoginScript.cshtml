@@ -18,6 +18,7 @@
     let sltRoles=document.getElementById('sltRoles');
     let txtUsuarioRegister=document.getElementById('txtUsuarioRegister');
     let txtPaswordRegister=document.getElementById('txtPaswordRegister');
+    let spnNumDoc=document.getElementById('spnNumDoc');
 
     document.addEventListener("DOMContentLoaded",async function () {
         await traerRoles();
@@ -59,6 +60,16 @@
         $(sltRoles).val('0');
     }
 
+    async function validarNumDoc(){
+        let url = `@Url.Action("ValidarNumDoc", "Login")` + `?numDoc=${$(txtNumeroDocumento).val()}`;
+        let r = await Get(url);
+        if(r.login){
+            return true;
+        }
+        ocultarElemento(spnNumDoc, false);
+        return false;
+    }
+
     txtUsusario.addEventListener('change', function(){
         ocultarElemento(spanLogin, true);
     });
@@ -92,22 +103,25 @@
     });
 
     btnRegistro.addEventListener('click', async function(){
-        var dato={
-            "nombre":$(txtNombre).val(),
-            "tipoDocumento":$(sltTipoDoc).val(),
-            "numeroDocumento":$(txtNumeroDocumento).val(),
-            "login":$(txtUsuarioRegister).val(),
-            "contraseña":$(txtPaswordRegister).val(),
-            "correo":$(txtCorreo).val(),
-            "telefono":$(txtTelefono).val(),
-            "idRol":parseInt($(sltRoles).val())
-        }
-        let url = `@Url.Action("RegistrarUsuario", "Login")`;
-        let r = await Get(url, {'usuario': dato});
-        if(r.mensaje=='se creo usuario'){
-            ocultarElemento(divLogin, false);
-            ocultarElemento(divRegistrar, true);
-            limpiarRegistro();
+        
+        if(await validarNumDoc()){
+            var dato={
+                "nombre":$(txtNombre).val(),
+                "tipoDocumento":$(sltTipoDoc).val(),
+                "numeroDocumento":$(txtNumeroDocumento).val(),
+                "login":$(txtUsuarioRegister).val(),
+                "contraseña":$(txtPaswordRegister).val(),
+                "correo":$(txtCorreo).val(),
+                "telefono":$(txtTelefono).val(),
+                "idRol":parseInt($(sltRoles).val())
+            }
+            let url = `@Url.Action("RegistrarUsuario", "Login")`;
+            let r = await Get(url, {'usuario': dato});
+            if(r.mensaje=='se creo usuario'){
+                ocultarElemento(divLogin, false);
+                ocultarElemento(divRegistrar, true);
+                limpiarRegistro();
+            }
         }
     })
 
@@ -115,6 +129,10 @@
         ocultarElemento(divLogin, false);
         ocultarElemento(divRegistrar, true);
         limpiarRegistro();
+    })
+
+    txtNumeroDocumento.addEventListener('change', function(){
+        ocultarElemento(spnNumDoc, true);
     })
 
 

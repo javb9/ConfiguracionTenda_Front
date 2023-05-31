@@ -1,0 +1,33 @@
+<div class="div-estandar" id="divUsuario">
+    <h1 class="mb-4">Solicitud visita tecnica</h1>
+    <div class="div-registrar d-block">
+        <div class="m-3">
+            <label for="txtNombreShow" class="form-label">Asunto</label>
+            <input type="text" class="form-control" value="Visita tecnica" readonly>
+        </div>
+        <div class="m-3 row">
+            <label for="txtTipoDocShow" class="form-label col-12">Observaciones</label>
+            <textarea class="form-control" id="txtObservaciones" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <div class="m-4 col-md-12 text-end">
+        <button class="btn btn-primary col-2" id="btnGuardarVisita" data-bs-toggle="modal" data-bs-target="#exampleModal">Guardar</button>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body m-5">
+        <div class="row">
+            <div class="text-center">
+                <p>Solicitud realizada con exito</p>
+            </div>
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">ACEPTAR</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

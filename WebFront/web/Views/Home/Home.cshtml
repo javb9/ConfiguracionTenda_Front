@@ -21,6 +21,9 @@
             <li class="li-opciones d-none" id="liNotifiaciones">
                 <a type="button" id="btnNotificaciones">notificaciones</a>
             </li>
+            <li class="li-opciones d-none" id="liSolicitudVisita">
+                <a type="button" id="btnSolicitudVisita">solicitar visita tecnica</a>
+            </li>
         </ul>
         <div class="text-center boton-salir">
             <a type="button" class="btn btn-primary w-50" asp-controller="Login" asp-action="Index">Salir</a>
@@ -42,6 +45,9 @@
             </div>
             <div class="mt-5 d-none" id="divNotificaciones">
                 <partial name="Partials\notificaciones" />
+            </div>
+            <div class="mt-5 d-none" id="divSolicitudVisita">
+                <partial name="Partials\SolicitudVisita" />
             </div>
         </div>
     </div>

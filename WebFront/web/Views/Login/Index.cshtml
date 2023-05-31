@@ -42,6 +42,7 @@
                 <div class="mt-1 col-md-3">
                     <label for="txtNumeroDocumento" class="form-label">Numero de documento</label>
                     <input type="text" class="form-control" id="txtNumeroDocumento" placeholder="Numero de documento">
+                    <span id="spnNumDoc" class="d-none span-advertencia">Ya existe un usuario con el mismo numero de documento</span>
                 </div>
                 <div class="mt-1 col-md-3">
                     <label for="txtCorreo" class="form-label">Correo</label>
@@ -68,8 +69,8 @@
                 </div>
             </div>
             <div class="mt-4 col-md-12 text-end">
-                <button class="btn btn-secondary col-2" id="btnVolverRegistrarse">Cancelar</button>
-                <button class="btn btn-primary col-2" id="btnRegistro">Registrarse</button>
+                <button class="btn btn-secondary col-md-2 col-12" id="btnVolverRegistrarse">Cancelar</button>
+                <button class="btn btn-primary col-md-2 col-12" id="btnRegistro">Registrarse</button>
             </div>
         </div>
     </div>

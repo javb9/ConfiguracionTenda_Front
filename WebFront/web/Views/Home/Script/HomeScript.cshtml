@@ -35,6 +35,11 @@
     let liCambioContrasenna=document.getElementById('liCambioContrasenna');
     let liConectados=document.getElementById('liConectados');
     let spnPassword=document.getElementById('spnPassword');
+    let liSolicitudVisita =document.getElementById('liSolicitudVisita');
+    let divSolicitudVisita =document.getElementById('divSolicitudVisita');
+    let btnSolicitudVisita=document.getElementById('btnSolicitudVisita');
+    let txtObservaciones=document.getElementById('txtObservaciones');
+    let btnGuardarVisita = document.getElementById('btnGuardarVisita');
 
     let idUsuario=0;
     let puertaEnlace="192.168.1.1";
@@ -47,10 +52,12 @@
             liNotifiaciones.classList.remove('d-none');
             liConectados.classList.add('d-none');
             liCambioContrasenna.classList.add('d-none');
+            liSolicitudVisita.classList.add('d-none');
         }else{
             liNotifiaciones.classList.add('d-none');
             liConectados.classList.remove('d-none');
             liCambioContrasenna.classList.remove('d-none');
+            liSolicitudVisita.classList.remove('d-none');
         }
         await traerRoles();
         await traerTiposDocumento();
@@ -83,6 +90,7 @@
         divCambioContrasenna.classList.add('d-none');
         divConectados.classList.add('d-none');
         divNotificaciones.classList.add('d-none');
+        divSolicitudVisita.classList.add('d-none');
     }
 
     function limpiarControlesDatosUsuario(){
@@ -93,6 +101,7 @@
         txtCorreoShow.value='';
         txtTelefonoShow.value='';
         sltRolesShow.value='0';
+        txtObservaciones.value='';
     }
 
     
@@ -239,6 +248,11 @@
         divNotificaciones.classList.remove('d-none');
     });
 
+    btnSolicitudVisita.addEventListener('click', async function(){
+        limpiarHome()
+        divSolicitudVisita.classList.remove('d-none');
+    });
+
     btnGuardarCambio.addEventListener('click', async function(){
         if(validarContrasennaCantidad()){
             let dato={
@@ -280,6 +294,12 @@
     txtPasswordRed.addEventListener('change', function(){
         spnPassword.classList.add('d-none');
         txtPasswordRed.classList.remove('button-alert');
+    })
+
+    btnGuardarVisita.addEventListener('click', async function(){
+        let url = `@Url.Action("solicitudVisita", "Home")` + `?idUsuario=${parseInt(idUsuario)}`;
+        let r = await Get(url);
+        txtObservaciones.value='';
     })
 
     function validarContrasennaCantidad(){

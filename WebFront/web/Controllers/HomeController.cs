@@ -29,6 +29,15 @@ namespace web.Controllers
             return new HttpClient(clientHandler);
         }
 
+        public object solicitudVisita(decimal idUsuario)
+        {
+            string URI = UrlApi + "/solicitudVisita/" + idUsuario;
+            var httpClient = getHttpClient();
+            var response = httpClient.GetAsync(URI).Result;
+
+            return true;
+        }
+
         public object CambiarContrasennaRouter(routerAdmin datos)
         {
             string URI = UrlApi + "/EditRouterInfo";
