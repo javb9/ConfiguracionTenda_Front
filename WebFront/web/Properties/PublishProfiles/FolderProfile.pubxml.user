@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\PublicacionDiana</_PublishTargetUrl>
-    <History>True|2023-04-25T01:56:03.9469867Z;True|2023-04-24T20:55:34.2572531-05:00;False|2023-04-24T20:55:21.9012720-05:00;True|2023-04-24T20:49:28.4655002-05:00;</History>
+    <History>True|2023-05-26T21:32:53.7395480Z;True|2023-04-24T20:56:03.9469867-05:00;True|2023-04-24T20:55:34.2572531-05:00;False|2023-04-24T20:55:21.9012720-05:00;True|2023-04-24T20:49:28.4655002-05:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

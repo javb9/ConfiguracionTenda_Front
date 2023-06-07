@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="web.Controllers.HomeController" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAAAAAAAAAgAAAAAAIQJAQAACAACBAAAAAgAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="web.Controllers.LoginController">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAIAIAABAAAAABEAAAAAQAA=</HashCode>
+      <FileName>Controllers\LoginController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="web.Models.ErrorViewModel" Collapsed="true">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ErrorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="web.Models.Model">
+    <Position X="2.25" Y="0.75" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="web.Models.Model.Responses" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.BlockDeviceModel" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.parametricas" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.datasUser" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.conectados" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.validacionAut" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.user" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.routerAdmin" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="web.Models.Model.notificaciones" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Model.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
