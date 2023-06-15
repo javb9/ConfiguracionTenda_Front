@@ -63,5 +63,11 @@
         {
             public string mac { get; set; }
         }
+
+        public class requestVisit
+        {
+            public decimal idUsuario { get; set; }
+            public string observacion { get; set; }
+        }
     }
 }

@@ -29,11 +29,11 @@ namespace web.Controllers
             return new HttpClient(clientHandler);
         }
 
-        public object solicitudVisita(decimal idUsuario)
+        public object solicitudVisita(requestVisit datos)
         {
-            string URI = UrlApi + "/solicitudVisita/" + idUsuario;
+            string URI = UrlApi + "/solicitudVisita";
             var httpClient = getHttpClient();
-            var response = httpClient.GetAsync(URI).Result;
+            var response = httpClient.PostAsJsonAsync(URI, datos).Result;
 
             return true;
         }

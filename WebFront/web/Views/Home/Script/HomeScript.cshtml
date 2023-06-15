@@ -297,8 +297,12 @@
     })
 
     btnGuardarVisita.addEventListener('click', async function(){
-        let url = `@Url.Action("solicitudVisita", "Home")` + `?idUsuario=${parseInt(idUsuario)}`;
-        let r = await Get(url);
+        let url = `@Url.Action("solicitudVisita", "Home")`;
+        let data = {
+            "idUsuario":parseInt(idUsuario),
+            "observacion" : txtObservaciones.value
+        }
+        let r = await Get(url, data);
         txtObservaciones.value='';
     })
 
