@@ -1,11 +1,5 @@
 <script>
 
-    
-    let sidebar=document.getElementById('sidebar');
-    let openSlide=document.getElementById('openSlide');
-    let contenedor=document.getElementById('contenedor');
-    let closeSidebar=document.getElementById('closeSidebar');
-
     let divDatosUsuario=document.getElementById('divDatosUsuario');
     let btnDatosUsuario=document.getElementById('btnDatosUsuario');
 
@@ -165,20 +159,6 @@
         ]
         DataTableGenerico('#tableConectados', columns, r, 1)
     }
-
-    openSlide.addEventListener('click', function(){
-        sidebar.classList.add('active');
-        contenedor.style.marginLeft="0";
-        contenedor.style.width="75%";
-        openSlide.classList.add('d-none');
-    });
-
-    closeSidebar.addEventListener('click', function(){
-        sidebar.classList.remove('active');
-        contenedor.style.marginLeft="-25%";
-        contenedor.style.width="100%";
-        openSlide.classList.remove('d-none');
-    });
     
     btnDatosUsuario.addEventListener('click', async function(){
         limpiarHome()

@@ -3,50 +3,50 @@
 }
 
 <div class="row m-0 home">
-    <div class="active" id="sidebar">
-        <div class="text-end">
-            <a type="button" id="closeSidebar"><span class="fas fa-times fa-2x"></span></a>
-        </div>
-        <ul>
-            <li class="mb-5"><img src="../images/imagenSilcom.png" height="80px" alt=""></li>
-            <li class="li-opciones">
-                <a type="button" id="btnDatosUsuario">Datos del usuario</a>
-            </li>
-            <li class="li-opciones" id="liCambioContrasenna">
-                <a type="button" id="btnCambioContrasenna">Cambio de contraseña router</a>
-            </li>
-            <li class="li-opciones" id="liConectados">
-                <a type="button" id="btnConectados">Dispositivos conectados</a>
-            </li>
-            <li class="li-opciones d-none" id="liNotifiaciones">
-                <a type="button" id="btnNotificaciones">notificaciones</a>
-            </li>
-            <li class="li-opciones d-none" id="liSolicitudVisita">
-                <a type="button" id="btnSolicitudVisita">solicitar visita tecnica</a>
-            </li>
-        </ul>
-        <div class="text-center boton-salir">
-            <a type="button" class="btn btn-primary w-50" asp-controller="Login" asp-action="Index">Salir</a>
-        </div>
-    </div>
-    <div class="home-contenedor" id="contenedor">
+    <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="row">
-            <div class="col-12 m-2">
-                <button class="btn btn-light d-none" id="openSlide"><span class="fas fa-bars"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li>
+                        <img src="../images/imagenSilcom.png" height="80px" alt="">
+                    </li>
+                    <li class="nav-item">
+                        <a type="button" id="btnDatosUsuario" class="nav-link">Datos del usuario</a>
+                    </li>
+                    <li class="nav-item" id="liCambioContrasenna">
+                        <a type="button" id="btnCambioContrasenna" class="nav-link">Cambio de contraseña router</a>
+                    </li>
+                    <li class="nav-item d-none" id="liConectados">
+                        <a type="button" id="btnConectados" class="nav-link">Dispositivos conectados</a>
+                    </li>
+                    <li class="nav-item d-none" id="liNotifiaciones">
+                        <a type="button" id="btnNotificaciones" class="nav-link">notificaciones</a>
+                    </li>
+                    <li class="nav-item d-none" id="liSolicitudVisita">
+                        <a type="button" id="btnSolicitudVisita" class="nav-link">solicitar visita tecnica</a>
+                    </li>
+                    <li class="nav-item item-salir">
+                        <a type="button" class="nav-link" asp-controller="Login" asp-action="Index">Salir</a>
+                    </li>
+                </ul>
             </div>
-            <div class="mt-5 d-none" id="divDatosUsuario">
+        </div>
+    </nav>
+    <div id="contenedor">
+        <div class="row">
+            <div class="d-none" id="divDatosUsuario">
                 <partial name="Partials\datosUsuario" />
             </div>
-            <div class="mt-5 d-none" id="divCambioContrasenna">
+            <div class="d-none" id="divCambioContrasenna">
                 <partial name="Partials\cambioContrasenna" />
             </div>
-            <div class="mt-5 d-none" id="divConectados">
+            <div class="d-none" id="divConectados">
                 <partial name="Partials\dispositivosConectados" />
             </div>
-            <div class="mt-5 d-none" id="divNotificaciones">
+            <div class="d-none" id="divNotificaciones">
                 <partial name="Partials\notificaciones" />
             </div>
-            <div class="mt-5 d-none" id="divSolicitudVisita">
+            <div class="d-none" id="divSolicitudVisita">
                 <partial name="Partials\SolicitudVisita" />
             </div>
         </div>
