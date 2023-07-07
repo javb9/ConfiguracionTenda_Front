@@ -1,0 +1,6 @@
+D:\Users\diana\Documents\TRABAJO DE GRADO\CODIGO\ConfiguracionTenda_Front\WebFront\TestProject\bin\Debug\net6.0\CoverletSourceRootsMapping
+D:\Users\diana\Documents\TRABAJO DE GRADO\CODIGO\ConfiguracionTenda_Front\WebFront\TestProject\obj\Debug\net6.0\TestProject.csproj.AssemblyReference.cache
+D:\Users\diana\Documents\TRABAJO DE GRADO\CODIGO\ConfiguracionTenda_Front\WebFront\TestProject\obj\Debug\net6.0\TestProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\diana\Documents\TRABAJO DE GRADO\CODIGO\ConfiguracionTenda_Front\WebFront\TestProject\obj\Debug\net6.0\TestProject.AssemblyInfoInputs.cache
+D:\Users\diana\Documents\TRABAJO DE GRADO\CODIGO\ConfiguracionTenda_Front\WebFront\TestProject\obj\Debug\net6.0\TestProject.AssemblyInfo.cs
+D:\Users\diana\Documents\TRABAJO DE GRADO\CODIGO\ConfiguracionTenda_Front\WebFront\TestProject\obj\Debug\net6.0\TestProject.csproj.CoreCompileInputs.cache
