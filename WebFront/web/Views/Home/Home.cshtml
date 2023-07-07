@@ -3,37 +3,39 @@
 }
 
 <div class="row m-0 home">
-    <nav class="navbar navbar-expand navbar-light bg-light">
-        <div class="row">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li>
-                        <img src="../images/imagenSilcom.png" height="80px" alt="">
-                    </li>
-                    <li class="nav-item">
-                        <a type="button" id="btnDatosUsuario" class="nav-link">Datos del usuario</a>
-                    </li>
-                    <li class="nav-item" id="liCambioContrasenna">
-                        <a type="button" id="btnCambioContrasenna" class="nav-link">Cambio de contraseña router</a>
-                    </li>
-                    <li class="nav-item d-none" id="liConectados">
-                        <a type="button" id="btnConectados" class="nav-link">Dispositivos conectados</a>
-                    </li>
-                    <li class="nav-item d-none" id="liNotifiaciones">
-                        <a type="button" id="btnNotificaciones" class="nav-link">notificaciones</a>
-                    </li>
-                    <li class="nav-item d-none" id="liSolicitudVisita">
-                        <a type="button" id="btnSolicitudVisita" class="nav-link">solicitar visita tecnica</a>
-                    </li>
-                    <li class="nav-item item-salir">
-                        <a type="button" class="nav-link" asp-controller="Login" asp-action="Index">Salir</a>
-                    </li>
-                </ul>
+        <div class="active estilos_div" id="sidebar">
+            <div class="text-end">
+                <a type="button" id="closeSidebar"><span class="fas fa-times fa-2x"></span></a>
             </div>
+            <ul class="m-0">
+                <li>
+                    <img src="../images/imagenSilcom.png" height="80px" alt="">
+                </li>
+                <li class="li-opciones">
+                    <a type="button" id="btnDatosUsuario" class="nav-link">Datos del usuario</a>
+                </li>
+                <li class="li-opciones" id="liCambioContrasenna">
+                    <a type="button" id="btnCambioContrasenna" class="nav-link">Cambio de contraseña router</a>
+                </li>
+                <li class="li-opciones d-none" id="liConectados">
+                    <a type="button" id="btnConectados" class="nav-link">Dispositivos conectados</a>
+                </li>
+                <li class="li-opciones d-none" id="liNotifiaciones">
+                    <a type="button" id="btnNotificaciones" class="nav-link">notificaciones</a>
+                </li>
+                <li class="li-opciones d-none" id="liSolicitudVisita">
+                    <a type="button" id="btnSolicitudVisita" class="nav-link">solicitar visita tecnica</a>
+                </li>
+                <li class="li-opciones item-salir">
+                    <a type="button" class="nav-link" asp-controller="Login" asp-action="Index">Salir</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-    <div id="contenedor">
+    <div class="home-contenedor" id="contenedor">
         <div class="row">
+            <button class="btn btn-light d-none" id="openSlide">
+                <span class="fas fa-bars"></span>
+            </button>
             <div class="d-none" id="divDatosUsuario">
                 <partial name="Partials\datosUsuario" />
             </div>

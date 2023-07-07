@@ -136,23 +136,98 @@ span{
   font-size: 10px;
 }
 
-.navbar-nav img {
+.estilos_div img {
   width: 80%;
   height: 80%;
 }
 
+.estilos_div{
+  background: linear-gradient(to right, #3265ca, #2106b7);
+  overflow-y: scroll;
+  height: 200px;
+  width: 350px;
+}
 
-.nav-item,.navbar-nav{
-  align-items: center;
-  max-height: 80px !important;
+
+.estilos_div::-webkit-scrollbar {
+  width: 10px;;
 }
-.navbar{
-  background-color: #3265ca !important;
+
+.estilos_div::-webkit-scrollbar-thumb{
+  background: #3dc6f0;
+  border-radius: 5px;
 }
-.nav-item a{
+
+.home-contenedor{
+  position: absolute;
+  left: 25% !important;
+  width: 75%;
+  height: 100%;
+  color: #000;
+  transition: .5s;
+}
+
+#sidebar{
+  box-shadow: 1px 0 15px 1px #333;
+  color: #fff !important;
+  max-width: 25%;
+  min-width: 25%;
+  background: linear-gradient(to right, #3265ca, #2106b7);
+  position: fixed;
+  left: -25%;
+  min-height: 100%;
+  transition: .5s;
+}
+
+#sidebar.active{
+  left: 0 !important;
+}
+
+#sidebar ul {
+  margin-top: 25%;
+}
+
+#sidebar ul li{
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  list-style: none;
+  padding: 15px 10px;
+  text-align: center;
+}
+
+.li-opciones a{
   color: #fff !important;
 }
 
-.nav-item a:hover{
-  background-color: #3333cc;
+.li-opciones{
+  margin-top: 20px;
+  border-bottom: 1px solid rgba(100,100,100, .3) !important;
+}
+
+.li-opciones:hover{
+  background-color: #3265ca;
+}
+
+.active{
+  left: 0;
+}
+
+#closeSidebar span{
+  color: #fff !important;
+}
+
+#closeSidebar:hover{
+  background-color: #3265ca;
+}
+
+#closeSidebar{
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+}
+
+#openSlide{
+  max-width: 40px;
+  margin: 5px;;
 }
